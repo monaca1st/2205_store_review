@@ -1,0 +1,587 @@
+/*----------------------------------------
+	reset
+----------------------------------------*/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+* {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, dialog, figure, footer, header, main, menu, nav, section,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+header, footer, article, section, aside, main, nav, menu, figure, figcaption {
+  display: block;
+}
+
+span, small, strong, em, b, i {
+  color: inherit;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  vertical-align: top;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th {
+  text-align: left;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+input, textarea {
+  margin: 0;
+  padding: 0;
+}
+
+address {
+  font-style: normal;
+}
+
+q::before,
+q::after {
+  display: none;
+}
+
+/*----------------------------------------
+  value
+----------------------------------------*/
+// ========== mixin ==========
+$pc: 768px;
+@mixin media-pc {
+  @media screen and (min-width: $pc),print {
+    @content;    
+  }
+}
+
+// ========== color ==========
+$c-black: #000;
+$c-white: #fff;
+$c-gray--dark: #141414 ;
+$c-gray--light: #ccc;
+$c-base: #e6e2d7;
+$c-yellow: #F9E906;
+$c-red: #952A26;
+
+// ========== font ==========
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap');
+.header__button-inner {
+  font-size: 1.6rem;
+  color: $c-white;
+}
+.navmenu__link{
+  font-size: 1.6rem;
+  color: $c-white;
+}
+.news__heading-lv2 {
+  letter-spacing: .1em;
+  font-size: 2.8rem;
+  font-weight: normal;
+}
+.news__heading-lv2::before {
+  letter-spacing: .03em;
+  font-size: 1.6rem;
+}
+.news__date {
+  font-size: 1.2rem;
+}
+.news__title {
+  font-size: 1.6rem;
+}
+.product1__heading-lv2,
+.product2__heading-lv2 {
+  line-height: 1;
+  font-weight: normal;
+  font-size: 3.2rem;
+}
+%product__image-description {
+  color: $c-white;
+}
+.footer__address,
+.footer__phone,
+.footer__link {
+  font-size: 1.4rem;
+}
+.footer__buttons--online,
+.footer__buttons--form {
+  font-size: 1.4rem;
+}
+// ////////// PC版 //////////
+@include media-pc {
+  .news__heading-lv2 {
+    font-size: 3.6rem;
+  }
+  .product__heading-lv2 {
+    font-size: 3.6rem;
+  }
+  .news__heading-lv2::before {
+    font-size: 1.4rem;
+  }
+  %product__image-description {
+    font-size: 1.6rem;
+  }
+  .product1__heading-lv2::after,
+  .product2__heading-lv2::after {
+    font-size: 1.2rem ;
+    letter-spacing: .06em;
+  }
+  .footer__address,
+  .footer__phone,
+  .footer__link {
+      font-size: 1.6rem;
+  }  
+}
+
+/*----------------------------------------
+	base
+----------------------------------------*/
+// (wagashi PDFLOCSS)ここから
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+body, html {
+  font-size: 62.5%;//追記
+}
+body {
+  // font-size: 16px; 削除
+  line-height: 1.5;
+  font-family: 'Noto Serif JP', serif, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  color: $c-gray--dark;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+input {
+  margin: 0;
+  padding: 0;
+}
+textarea {
+  padding: 0;
+  font: inherit;
+  color: inherit;  
+}
+button {
+  font: inherit;  
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: inherit;  
+  cursor: pointer;
+}
+//wagashi PDFLOCSSここまで
+
+/*----------------------------------------
+	header
+----------------------------------------*/
+.header {
+  background: url(../images/mainvisual-sp.jpg) no-repeat center center;
+  background-size: cover;
+  background-color: $c-black;
+  width: 100%;
+  padding: 20px;
+  height: 100vh;
+  position: relative;
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+}
+.header__button-outer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba($color: $c-white, $alpha: .2);
+  display: inline-block;
+  transition: opacity .3s;
+
+  .header__button-inner {
+    border: 1px solid $c-gray--light;
+    display: block;
+    margin: 8px;
+    padding: 30px 18px;
+    // -webkit-writing-mode: vertical-rl;
+    //     -ms-writing-mode: tb-rl;
+    //         writing-mode: vertical-rl;
+  }
+}
+.header__button-outer:hover {
+  opacity: .8;
+}
+// ////////// PC版 //////////
+// mixin使ってみたところ
+@include media-pc {
+  .header {
+    background: url(../images/mainvisual-pc.jpg) no-repeat center top;
+    background-size: cover;
+    padding: 60px 80px;
+  }
+  .header__button-outer {
+    bottom: 30px;
+    left: 40px;
+
+    .header__button-inner {
+      padding: 30px 18px;
+    }
+  }
+}
+
+/*----------------------------------------
+	gnav
+----------------------------------------*/
+.navmenu__list {
+  // background-color: pink;
+  margin-right: 60px;
+  .navmenu__item:not(:last-of-type) {
+    margin-left: 25px;
+  }
+  .navmenu__link {
+    // background-color: palevioletred;
+    display: block;
+    transition: opacity .3s;
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
+/*----------------------------------------
+	main
+----------------------------------------*/
+// ==========News==========
+.news__heading-lv2 {
+  // background-color: pink;
+  position: relative;
+  // -webkit-writing-mode: vertical-rl;
+  //     -ms-writing-mode: tb-rl;
+  //         writing-mode: vertical-rl;
+}
+.news__heading-lv2::before {
+  // background-color: palevioletred;
+  display: block;
+  position: relative;
+  top: -0.5em;
+  right: 0;
+  content: "News";
+  // -webkit-writing-mode: vertical-rl;
+  //     -ms-writing-mode: tb-rl;
+  //         writing-mode: vertical-rl;
+}
+.news__info {
+  margin-top: 12px;
+  margin-right: 30px;
+  // -webkit-writing-mode: vertical-rl;
+  //     -ms-writing-mode: tb-rl;
+  //         writing-mode: vertical-rl;
+}
+// 日付とタイトル共通
+%news__base {
+  // background-color: paleturquoise;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  // line-height: 1;
+}
+// 日付
+.news__date {
+  @extend %news__base;
+  border-right: 1px solid $c-black;
+  padding-right: 12px;
+
+  time {
+    font-size: inherit;
+  }
+}
+// タイトル
+.news__title {
+  @extend %news__base;
+  padding-right: 5px;
+  padding-left: 12px;
+}
+.news__title:last-of-type {
+  border-left: 1px solid $c-black;
+}
+// PC表示は5件、スマホ表示は3件に切り替え
+.news__date:nth-of-type(n+4),
+.news__title:nth-of-type(n+4) {
+  display: none;  
+}
+// ////////// PC版 //////////
+@include media-pc {
+  .news__info {
+    margin: 80px 100px 0 0;
+  }
+  .news__date {
+    padding-right: 30px;
+  }
+  .news__title {
+    padding-right: 5px;
+    padding-left: 30px;
+  }
+  .news__date:nth-of-type(n+4),
+  .news__title:nth-of-type(n+4) {
+    display: block;  
+  }  
+}
+
+// ==========Products==========
+// ---------- 共通 ----------
+// @extendを使ってみた箇所
+// プレースホルダーセレクタに共通のスタイルを記述して、
+// １つ目と２つ目のクラスそれぞれに@extendを記述
+%product__heading-lv2 {
+  // background-color: pink;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  letter-spacing: .1em
+}
+.product1__heading-lv2 {
+  @extend %product__heading-lv2;
+  margin-left: 20px;
+}
+.product2__heading-lv2 {
+  @extend %product__heading-lv2;
+  margin-right: 20px;
+}
+// @extendを使ってみた箇所
+// 1つ目のクラスの内容を、２つ目のクラスに継承
+.product1__image {
+  width: 100%;
+  margin-top: 70px;
+  position: relative;
+}
+.product2__image {
+  @extend .product1__image;
+}
+// ---------- Product 1 ----------
+%product__image-description {
+  display: block;
+  width: 56%;
+  padding: 30px 0;
+  position: absolute;
+  text-align: center;
+}
+.product1__image-description {
+  @extend %product__image-description;
+  background-color: rgba($color: $c-yellow, $alpha: .6);
+  bottom: -20px;
+  left: -20px;
+}
+// ---------- Product 2 ----------
+.product2__image-description {
+  @extend %product__image-description;
+  background-color: rgba($color: $c-red, $alpha: .6);
+  right: -20px;
+  bottom: -20px;
+}
+// ////////// PC版 //////////
+@include media-pc {
+  .product1__heading-lv2,
+  .product2__heading-lv2 {
+    position: relative;
+  }
+  %product__heading-lv2--after {
+    width: 100%;
+    height: 100%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    display: block;
+    position: absolute;
+  }
+  .product1__heading-lv2::after {
+    @extend %product__heading-lv2--after;
+    right: 6px;
+    top: 290px;
+    content: "Create New Values";
+  }
+  .product2__heading-lv2::after {
+    @extend %product__heading-lv2--after;
+    right: 6px;
+    top: 290px;
+    content: "Science & Technology";
+  }
+  .product1__image,
+  .product2__image {
+    width: 62.5%;
+  }
+  %product__image-description {
+    padding: 50px 0;
+  }
+}
+//==========map==========
+.map {
+  background-color: $c-gray--light;
+  width: 100%;
+  position: relative;
+  padding-top: 88.3%;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    vertical-align: bottom;
+  }
+}
+// ////////// PC版 //////////
+@include media-pc {
+  .map {
+    padding-top: 32%;
+  }
+}
+/*----------------------------------------
+footer
+----------------------------------------*/
+.footer {
+  background-color: $c-black;
+  width: 100%;
+  padding: 40px 30px 30px;
+  color: $c-white;
+}
+.footer__outer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.footer__inner {
+  // background-color: violet;
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+}
+.footer__address {
+  margin-right: 25px;
+}
+.footer__menu {
+  margin-right: 25px;
+  .footer__item:not(:first-of-type) {
+    padding-right: 10px;
+  }
+  .footer__link {
+    transition: opacity .3s;
+  }
+  .footer__link:hover {
+    opacity: .7;
+  }
+}
+.footer__buttons {
+  position: static;
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+  .footer__buttons--online {
+    padding-bottom:8px;
+    transition: opacity .3s;
+  }
+  .footer__buttons--form {
+    padding-top: 8px;
+    transition: opacity .3s;
+  }
+  .footer__buttons--online:hover,
+  .footer__buttons--form:hover {
+    opacity: .7;
+  }
+}
+.footer__copyright {
+  text-align: center;
+  margin-top: 10px;
+}
+// ////////// PC版 //////////
+@include media-pc {
+  .footer {
+    padding: 80px 80px 30px 30px;
+  }
+  .footer__address {
+    margin-right: 60px;
+  }
+  .footer__menu {
+    margin-right: 60px;
+    .footer__item:not(:first-of-type) {
+      padding-right: 25px;
+    }
+  }  
+}
+
+/*----------------------------------------
+container
+----------------------------------------*/
+.container {
+  background-color: $c-base;
+}
+
+/*----------------------------------------
+section
+----------------------------------------*/
+.section {
+  background-color: $c-base;
+  width: min(100%, 1024px);
+  margin: 0 auto;
+  padding: 80px 20px 0;
+}
+#news {
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+}
+#product1 {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+}
+#product2 {
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 160px;
+}
+// ブランチ追加 review/0601
