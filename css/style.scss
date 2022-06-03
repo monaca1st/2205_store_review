@@ -91,12 +91,17 @@ q::after {
 /*----------------------------------------
   value
 ----------------------------------------*/
-// ========== mixin ==========
+// ========== Sass ==========
 $pc: 768px;
 @mixin media-pc {
   @media screen and (min-width: $pc),print {
     @content;    
   }
+}
+%writing-vertical {
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
 }
 
 // ========== color ==========
@@ -135,8 +140,8 @@ $c-red: #952A26;
 .news__title {
   font-size: 1.6rem;
 }
-.product1__heading-lv2,
-.product2__heading-lv2 {
+.product-creation__heading-lv2,
+.product-harmony__heading-lv2 {
   line-height: 1;
   font-weight: normal;
   font-size: 2.4rem;
@@ -165,12 +170,12 @@ $c-red: #952A26;
   .news__heading-lv2::before {
     font-size: 1.4rem;
   }
-  .product1__heading-lv2,
-  .product2__heading-lv2 {
+  .product-creation__heading-lv2,
+  .product-harmony__heading-lv2 {
     font-size: 3.2rem;
   }
-  .product1__heading-lv2::after,
-  .product2__heading-lv2::after {
+  .product-creation__heading-lv2::after,
+  .product-harmony__heading-lv2::after {
     font-size: 1.4rem ;
     letter-spacing: .06em;
   }
@@ -232,16 +237,14 @@ button {
 	header
 ----------------------------------------*/
 .header {
-  background: url(../images/mainvisual-sp.jpg) no-repeat center center;
-  background-size: cover;
   background-color: $c-black;
+  background: url(../images/mainvisual-sp.jpg) no-repeat center top;
+  background-size: cover;
   width: 100%;
-  padding: 20px;
   height: 100vh;
+  padding: 20px;
   position: relative;
-  -webkit-writing-mode: vertical-rl;
-      -ms-writing-mode: tb-rl;
-          writing-mode: vertical-rl;
+  @extend %writing-vertical;
 }
 .heading-lv1 {
   width: 40px;
@@ -259,9 +262,6 @@ button {
     display: block;
     margin: 8px;
     padding: 30px 18px;
-    // -webkit-writing-mode: vertical-rl;
-    //     -ms-writing-mode: tb-rl;
-    //         writing-mode: vertical-rl;
   }
 }
 .header__button-outer:hover {
@@ -348,11 +348,12 @@ button {
     margin: 80px 100px 0 0;
   }
   .news__date {
-    padding-right: 30px;
+    padding: 15px 30px 15px 0;
   }
   .news__title {
-    padding-right: 5px;
-    padding-left: 30px;
+    // padding-right: 5px;
+    // padding-left: 30px;
+    padding: 15px 5px 15px 30px;
   }
   .news__title:nth-of-type(3) {
     border-left: none;
@@ -372,29 +373,26 @@ button {
 // プレースホルダーセレクタに共通のスタイルを記述して、
 // １つ目と２つ目のクラスそれぞれに@extendを記述
 %product__heading-lv2 {
-  // background-color: pink;
-  -webkit-writing-mode: vertical-rl;
-  -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
+  @extend %writing-vertical;
   letter-spacing: .1em
 }
-.product1__heading-lv2 {
+.product-creation__heading-lv2 {
   @extend %product__heading-lv2;
   margin-left: 10px;
 }
-.product2__heading-lv2 {
+.product-harmony__heading-lv2 {
   @extend %product__heading-lv2;
   margin-right: 10px;
 }
 // @extendを使ってみた箇所
 // 1つ目のクラスの内容を、２つ目のクラスに継承
-.product1__image {
+.product-creation__image {
   width: 90%;
   margin-top: 70px;
   position: relative;
 }
-.product2__image {
-  @extend .product1__image;
+.product-harmony__image {
+  @extend .product-creation__image;
 }
 // ---------- Product 1 ----------
 %product__image-description {
@@ -404,14 +402,14 @@ button {
   position: absolute;
   text-align: center;
 }
-.product1__image-description {
+.product-creation__image-description {
   @extend %product__image-description;
   background-color: rgba($color: $c-yellow, $alpha: .6);
   bottom: -20px;
   left: -20px;
 }
 // ---------- Product 2 ----------
-.product2__image-description {
+.product-harmony__image-description {
   @extend %product__image-description;
   background-color: rgba($color: $c-red, $alpha: .6);
   right: -20px;
@@ -419,10 +417,10 @@ button {
 }
 // ////////// PC版 //////////
 @include media-pc {
-  .product1__heading-lv2 {
+  .product-creation__heading-lv2 {
     margin-left: 20px;
   }
-  .product2__heading-lv2 {
+  .product-harmony__heading-lv2 {
     margin-right: 20px;
   }
   %product__heading-lv2--after {
@@ -431,16 +429,16 @@ button {
     top: 25px;
     letter-spacing: normal;
   }
-  .product1__heading-lv2::after {
+  .product-creation__heading-lv2::after {
     @extend %product__heading-lv2--after;
     content: "Create New Values";
   }
-  .product2__heading-lv2::after {
+  .product-harmony__heading-lv2::after {
     @extend %product__heading-lv2--after;
     content: "Science & Technology";
   }
-  .product1__image,
-  .product2__image {
+  .product-creation__image,
+  .product-harmony__image {
     width: 65%;
     margin-top: 100px;
   }
@@ -485,10 +483,7 @@ footer
   justify-content: space-between;
 }
 .footer__inner {
-  // background-color: violet;
-  -webkit-writing-mode: vertical-rl;
-      -ms-writing-mode: tb-rl;
-          writing-mode: vertical-rl;
+  @extend %writing-vertical;
 }
 .footer__info {
   margin-right: 25px;
@@ -507,12 +502,10 @@ footer
 }
 .footer__buttons {
   position: static;
-  -webkit-writing-mode: vertical-rl;
-      -ms-writing-mode: tb-rl;
-          writing-mode: vertical-rl;
+  @extend %writing-vertical;
   .footer__buttons--online {
     position: relative;
-    padding-bottom:8px;
+    padding: 0 0 8px 0;
     transition: opacity .3s;
   }
   .footer__buttons--online::after {
@@ -572,17 +565,15 @@ section
 }
 #news {
   padding-top: 80px;
-  -webkit-writing-mode: vertical-rl;
-      -ms-writing-mode: tb-rl;
-          writing-mode: vertical-rl;
+  @extend %writing-vertical;
 }
-#product1 {
+#product-creation {
   margin-top: 80px;
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-start;
 }
-#product2 {
+#product-harmony {
   margin-top: 100px;
   display: flex;
   align-items: flex-start;
@@ -595,10 +586,10 @@ section
   #news {
     padding-top: 180px;
   }
-  #product1 {
+  #product-creation {
     margin-top: 180px;
   }
-  #product2 {
+  #product-harmony {
     margin-top: 180px;
   }
   .map {

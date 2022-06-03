@@ -91,6 +91,11 @@ q::after {
 /*----------------------------------------
   value
 ----------------------------------------*/
+#news, .footer__buttons, .footer__inner, .product-harmony__heading-lv2, .product-creation__heading-lv2, .header {
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+}
+
 .header__button-inner {
   font-size: 1.6rem;
   color: #fff;
@@ -122,14 +127,14 @@ q::after {
   font-size: 1.6rem;
 }
 
-.product1__heading-lv2,
-.product2__heading-lv2 {
+.product-creation__heading-lv2,
+.product-harmony__heading-lv2 {
   line-height: 1;
   font-weight: normal;
   font-size: 2.4rem;
 }
 
-.product2__image-description, .product1__image-description {
+.product-harmony__image-description, .product-creation__image-description {
   color: #fff;
   font-size: 0.875rem;
   font-size: 14px;
@@ -158,18 +163,18 @@ q::after {
     font-size: 1.4rem;
   }
 
-  .product1__heading-lv2,
-.product2__heading-lv2 {
+  .product-creation__heading-lv2,
+.product-harmony__heading-lv2 {
     font-size: 3.2rem;
   }
 
-  .product1__heading-lv2::after,
-.product2__heading-lv2::after {
+  .product-creation__heading-lv2::after,
+.product-harmony__heading-lv2::after {
     font-size: 1.4rem;
     letter-spacing: 0.06em;
   }
 
-  .product2__image-description, .product1__image-description {
+  .product-harmony__image-description, .product-creation__image-description {
     font-size: 1.6rem;
   }
 
@@ -231,15 +236,13 @@ button {
 	header
 ----------------------------------------*/
 .header {
-  background: url(../images/mainvisual-sp.jpg) no-repeat center center;
-  background-size: cover;
   background-color: #000;
+  background: url(../images/mainvisual-sp.jpg) no-repeat center top;
+  background-size: cover;
   width: 100%;
-  padding: 20px;
   height: 100vh;
+  padding: 20px;
   position: relative;
-  -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
 }
 
 .heading-lv1 {
@@ -344,12 +347,11 @@ button {
   }
 
   .news__date {
-    padding-right: 30px;
+    padding: 15px 30px 15px 0;
   }
 
   .news__title {
-    padding-right: 5px;
-    padding-left: 30px;
+    padding: 15px 5px 15px 30px;
   }
 
   .news__title:nth-of-type(3) {
@@ -365,27 +367,25 @@ button {
     display: block;
   }
 }
-.product2__heading-lv2, .product1__heading-lv2 {
-  -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
+.product-harmony__heading-lv2, .product-creation__heading-lv2 {
   letter-spacing: 0.1em;
 }
 
-.product1__heading-lv2 {
+.product-creation__heading-lv2 {
   margin-left: 10px;
 }
 
-.product2__heading-lv2 {
+.product-harmony__heading-lv2 {
   margin-right: 10px;
 }
 
-.product1__image, .product2__image {
+.product-creation__image, .product-harmony__image {
   width: 90%;
   margin-top: 70px;
   position: relative;
 }
 
-.product2__image-description, .product1__image-description {
+.product-harmony__image-description, .product-creation__image-description {
   display: block;
   width: 64%;
   padding: 30px 0;
@@ -393,49 +393,49 @@ button {
   text-align: center;
 }
 
-.product1__image-description {
+.product-creation__image-description {
   background-color: rgba(249, 233, 6, 0.6);
   bottom: -20px;
   left: -20px;
 }
 
-.product2__image-description {
+.product-harmony__image-description {
   background-color: rgba(149, 42, 38, 0.6);
   right: -20px;
   bottom: -20px;
 }
 
 @media screen and (min-width: 768px), print {
-  .product1__heading-lv2 {
+  .product-creation__heading-lv2 {
     margin-left: 20px;
   }
 
-  .product2__heading-lv2 {
+  .product-harmony__heading-lv2 {
     margin-right: 20px;
   }
 
-  .product2__heading-lv2::after, .product1__heading-lv2::after {
+  .product-harmony__heading-lv2::after, .product-creation__heading-lv2::after {
     display: inline;
     position: relative;
     top: 25px;
     letter-spacing: normal;
   }
 
-  .product1__heading-lv2::after {
+  .product-creation__heading-lv2::after {
     content: "Create New Values";
   }
 
-  .product2__heading-lv2::after {
+  .product-harmony__heading-lv2::after {
     content: "Science & Technology";
   }
 
-  .product1__image,
-.product2__image {
+  .product-creation__image,
+.product-harmony__image {
     width: 65%;
     margin-top: 100px;
   }
 
-  .product1__image-description, .product2__image-description {
+  .product-creation__image-description, .product-harmony__image-description {
     width: 56%;
     padding: 50px 0;
   }
@@ -476,11 +476,6 @@ footer
   justify-content: space-between;
 }
 
-.footer__inner {
-  -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
-}
-
 .footer__info {
   margin-right: 25px;
 }
@@ -500,12 +495,10 @@ footer
 
 .footer__buttons {
   position: static;
-  -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
 }
 .footer__buttons .footer__buttons--online {
   position: relative;
-  padding-bottom: 8px;
+  padding: 0 0 8px 0;
   transition: opacity 0.3s;
 }
 .footer__buttons .footer__buttons--online::after {
@@ -567,18 +560,16 @@ section
 
 #news {
   padding-top: 80px;
-  -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
 }
 
-#product1 {
+#product-creation {
   margin-top: 80px;
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-start;
 }
 
-#product2 {
+#product-harmony {
   margin-top: 100px;
   display: flex;
   align-items: flex-start;
@@ -593,11 +584,11 @@ section
     padding-top: 180px;
   }
 
-  #product1 {
+  #product-creation {
     margin-top: 180px;
   }
 
-  #product2 {
+  #product-harmony {
     margin-top: 180px;
   }
 
