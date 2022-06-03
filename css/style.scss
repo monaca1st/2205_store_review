@@ -142,10 +142,12 @@ $c-red: #952A26;
 %product__image-description {
   color: $c-white;
 }
-.footer__address,
-.footer__phone,
-.footer__link {
+.footer__info {
+  line-height: 2;
   font-size: 1.4rem;
+}
+.footer__link {
+  font-size: 1.6rem;
 }
 .footer__buttons--online,
 .footer__buttons--form {
@@ -189,7 +191,7 @@ body, html {
 }
 body {
   // font-size: 16px; 削除
-  line-height: 1.5;
+  // line-height: 1.5;
   font-family: 'Noto Serif JP', serif, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   color: $c-gray--dark;
 }
@@ -521,8 +523,19 @@ footer
       -ms-writing-mode: tb-rl;
           writing-mode: vertical-rl;
   .footer__buttons--online {
+    position: relative;
     padding-bottom:8px;
     transition: opacity .3s;
+  }
+  .footer__buttons--online::after {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    border-bottom: 1px solid $c-white;
+    content: "";
   }
   .footer__buttons--form {
     padding-top: 8px;
@@ -542,7 +555,7 @@ footer
   .footer {
     padding: 80px 80px 30px 30px;
   }
-  .footer__address {
+  .footer__info {
     margin-right: 60px;
   }
   .footer__menu {

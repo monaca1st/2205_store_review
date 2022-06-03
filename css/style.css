@@ -131,10 +131,13 @@ q::after {
   color: #fff;
 }
 
-.footer__address,
-.footer__phone,
-.footer__link {
+.footer__info {
+  line-height: 2;
   font-size: 1.4rem;
+}
+
+.footer__link {
+  font-size: 1.6rem;
 }
 
 .footer__buttons--online,
@@ -183,7 +186,6 @@ body, html {
 }
 
 body {
-  line-height: 1.5;
   font-family: "Noto Serif JP", serif, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   color: #141414;
 }
@@ -495,8 +497,19 @@ footer
   writing-mode: vertical-rl;
 }
 .footer__buttons .footer__buttons--online {
+  position: relative;
   padding-bottom: 8px;
   transition: opacity 0.3s;
+}
+.footer__buttons .footer__buttons--online::after {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  border-bottom: 1px solid #fff;
+  content: "";
 }
 .footer__buttons .footer__buttons--form {
   padding-top: 8px;
@@ -517,7 +530,7 @@ footer
     padding: 80px 80px 30px 30px;
   }
 
-  .footer__address {
+  .footer__info {
     margin-right: 60px;
   }
 
