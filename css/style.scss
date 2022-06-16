@@ -1,92 +1,4 @@
-/*----------------------------------------
-	reset
-----------------------------------------*/
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
-
-* {
-  font-size: inherit;
-  line-height: inherit;
-}
-
-::before,
-::after {
-  text-decoration: inherit;
-  vertical-align: inherit;
-}
-
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, dialog, figure, footer, header, main, menu, nav, section,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-header, footer, article, section, aside, main, nav, menu, figure, figcaption {
-  display: block;
-}
-
-span, small, strong, em, b, i {
-  color: inherit;
-}
-
-html {
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-
-body {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-ul,
-ol {
-  list-style: none;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  border: 0;
-  vertical-align: top;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-caption, th {
-  text-align: left;
-}
-
-input, select {
-  vertical-align: middle;
-}
-
-input, textarea {
-  margin: 0;
-  padding: 0;
-}
-
-address {
-  font-style: normal;
-}
-
-q::before,
-q::after {
-  display: none;
-}
+@use "reset";
 
 /*----------------------------------------
   value
@@ -131,8 +43,7 @@ $c-red: #952A26;
 }
 .news__heading-lv2::before {
   letter-spacing: .03em;
-  font-size: .875rem; //14pxにならない…
-  font-size: .5em;
+  font-size: 1.4rem;
 }
 .news__date {
   font-size: 1.2rem;
@@ -148,8 +59,7 @@ $c-red: #952A26;
 }
 %product__image-description {
   color: $c-white;
-  font-size: .875rem; //14pxにならない
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 .footer__info {
   line-height: 2;
@@ -198,8 +108,7 @@ body, html {
   font-size: 62.5%;//追記
 }
 body {
-  // font-size: 16px; 削除
-  // line-height: 1.5;
+
   font-family: 'Noto Serif JP', serif, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   color: $c-gray--dark;
 }
@@ -232,6 +141,11 @@ button {
   cursor: pointer;
 }
 //wagashi PDFLOCSSここまで
+
+body {
+  background-color: $c-base;
+}
+
 
 /*----------------------------------------
 	header
@@ -268,7 +182,6 @@ button {
   opacity: .8;
 }
 // ////////// PC版 //////////
-// mixin使ってみたところ
 @include media-pc {
   .header {
     background: url(../images/mainvisual-pc.jpg) no-repeat center top;
@@ -289,13 +202,11 @@ button {
 	gnav
 ----------------------------------------*/
 .navmenu__list {
-  // background-color: pink;
   margin-right: 60px;
   .navmenu__item:not(:last-of-type) {
     margin-left: 25px;
   }
   .navmenu__link {
-    // background-color: palevioletred;
     display: block;
     transition: opacity .3s;
     &:hover {
@@ -310,6 +221,7 @@ button {
 .news__heading-lv2 {
   position: relative;
   margin: 0 15px 0 0;
+  @extend %writing-vertical;
 }
 .news__heading-lv2::before {
   display: block;
@@ -320,6 +232,8 @@ button {
 }
 .news__info {
   margin: 20px 30px 0 0;
+  max-height: 286px;
+  @extend %writing-vertical;
 }
 // 日付
 .news__date {
@@ -351,8 +265,6 @@ button {
     padding: 15px 30px 15px 0;
   }
   .news__title {
-    // padding-right: 5px;
-    // padding-left: 30px;
     padding: 15px 5px 15px 30px;
   }
   .news__title:nth-of-type(3) {
@@ -369,9 +281,6 @@ button {
 
 // ==========Products==========
 // ---------- 共通 ----------
-// @extendを使ってみた箇所
-// プレースホルダーセレクタに共通のスタイルを記述して、
-// １つ目と２つ目のクラスそれぞれに@extendを記述
 %product__heading-lv2 {
   @extend %writing-vertical;
   letter-spacing: .1em
@@ -384,8 +293,6 @@ button {
   @extend %product__heading-lv2;
   margin-right: 10px;
 }
-// @extendを使ってみた箇所
-// 1つ目のクラスの内容を、２つ目のクラスに継承
 .product-creation__image {
   width: 90%;
   margin-top: 70px;
@@ -424,7 +331,7 @@ button {
     margin-right: 20px;
   }
   %product__heading-lv2--after {
-    display: inline; //blockからinlineに変更するとleft&rightの指定なしにcenterに位置
+    display: inline;
     position: relative;
     top: 25px;
     letter-spacing: normal;
@@ -484,6 +391,9 @@ footer
 }
 .footer__inner {
   @extend %writing-vertical;
+}
+.footer__logo {
+  width: 40px;
 }
 .footer__info {
   margin-right: 25px;
@@ -548,13 +458,6 @@ footer
 }
 
 /*----------------------------------------
-container
-----------------------------------------*/
-.container {
-  background-color: $c-base;
-}
-
-/*----------------------------------------
 section
 ----------------------------------------*/
 .section {
@@ -564,8 +467,9 @@ section
   padding: 0 20px;
 }
 #news {
-  padding-top: 80px;
-  @extend %writing-vertical;
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 80px auto 0;
 }
 #product-creation {
   margin-top: 80px;
@@ -584,7 +488,7 @@ section
 // ////////// PC版 //////////
 @include media-pc {
   #news {
-    padding-top: 180px;
+    margin: 180px auto 0;
   }
   #product-creation {
     margin-top: 180px;
